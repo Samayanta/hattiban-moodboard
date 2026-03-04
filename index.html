@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hattiban Property Solutions - Visual Moodboard</title>
+    <style>
+        :root {
+            --primary: #1E3A5F;
+            --secondary: #D4AF37;
+            --accent: #00897B;
+            --bg: #F8F9FA;
+            --text: #2D3436;
+            --border: #DFE6E9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        header span {
+            color: var(--secondary);
+        }
+        
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 0.75rem 2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            white-space: nowrap;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+        
+        nav a:hover, nav a.active {
+            border-bottom-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Section */
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 1.5rem;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: white;
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .info-box h3 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Component Table */
+        .component-table {
+            width: 100%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .component-table th,
+        .component-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .component-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        
+        .component-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .tag.required { background: #E8F5E9; color: #2E7D32; }
+        .tag.verified { background: #E3F2FD; color: #1565C0; }
+        .tag.placeholder { background: #FFF3E0; color: #E65100; }
+        
+        /* Screenshot Grid */
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .screenshot-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        
+        .screenshot-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: #f0f0f0;
+        }
+        
+        .screenshot-info {
+            padding: 1rem;
+        }
+        
+        .screenshot-info h4 {
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .screenshot-info p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        /* Nepal UX Patterns */
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .pattern-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+        }
+        
+        .pattern-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+        
+        .pattern-card code {
+            display: block;
+            background: #f5f5f5;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #333;
+            margin-top: 0.5rem;
+        }
+        
+        .pattern-card .correct::before {
+            content: '✓ ';
+            color: green;
+        }
+        
+        .pattern-card .incorrect::before {
+            content: '✗ ';
+            color: red;
+        }
+        
+        /* Budget Ranges */
+        .budget-list {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            columns: 2;
+            column-gap: 2rem;
+        }
+        
+        .budget-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            break-inside: avoid;
+        }
+        
+        .budget-list li::before {
+            content: '▸ ';
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        footer a {
+            color: var(--secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                padding: 1rem;
+            }
+            
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .budget-list {
+                columns: 1;
+            }
+            
+            .component-table {
+                font-size: 0.85rem;
+            }
+            
+            .component-table th,
+            .component-table td {
+                padding: 0.5rem;
+            }
+        }
+        
+        /* Print */
+        @media print {
+            nav { display: none; }
+            .screenshot-card { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hattiban <span>Property Solutions</span> — Visual Moodboard</h1>
+    </header>
+    
+    <nav>
+        <a href="#overview" class="active">Overview</a>
+        <a href="#components">Components</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#nepal-ux">Nepal UX</a>
+        <a href="#budget">Budget Ranges</a>
+        <a href="#deploy">Deploy</a>
+    </nav>
+    
+    <main>
+        <!-- Overview -->
+        <section id="overview">
+            <h2>Project Overview</h2>
+            <div class="info-box">
+                <h3>📋 Specification Summary</h3>
+                <p><strong>Platform:</strong> WordPress + Houzez Theme | 
+                   <strong>Budget:</strong> 50K NPR | 
+                   <strong>Timeline:</strong> 2 months</p>
+                <p style="margin-top: 0.5rem; color: #666;">
+                    This moodboard consolidates Phase 1-5 research for Hattiban Property Solutions.
+                    All screenshots are from competitor sites and Houzez theme demos.
+                </p>
+            </div>
+            
+            <table class="component-table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Decision</th>
+                        <th>Source</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Theme</td>
+                        <td>Houzez ($69)</td>
+                        <td>Phase 2 Analysis</td>
+                        <td><span class="tag required">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>Property Types</td>
+                        <td>6 (House, Apartment, Land, Commercial, Business, Office)</td>
+                        <td>realestateinnepal</td>
+                        <td><span class="tag required">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>Budget Ranges</td>
+                        <td>7 ranges (based on Crore)</td>
+                        <td>lalpurjanepal</td>
+                        <td><span class="tag required">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>WhatsApp</td>
+                        <td>Floating button + Property CTA</td>
+                        <td>realestateinnepal, lalpurjanepal</td>
+                        <td><span class="tag required">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>Maps</td>
+                        <td>OpenStreetMap (free)</td>
+                        <td>Decision</td>
+                        <td><span class="tag placeholder">Deferred</span></td>
+                    </tr>
+                    <tr>
+                        <td>Payments</td>
+                        <td>Skipped (free submissions)</td>
+                        <td>Decision</td>
+                        <td><span class="tag placeholder">Phase 2</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Component Mapping -->
+        <section id="components">
+            <h2>Component Mapping</h2>
+            <p style="margin-bottom: 1rem; color: #666;">
+                Table linking each UI component to its source and screenshot reference.
+            </p>
+            
+            <table class="component-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Source</th>
+                        <th>Screenshot</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Header & Navigation</td>
+                        <td>Houzez Main, realestateinnepal</td>
+                        <td>header_houzez_main.png</td>
+                        <td><span class="tag verified">Verified</span></td>
+                    </tr>
+                    <tr>
+                        <td>Hero + Search Overlay</td>
+                        <td>Houzez Main</td>
+                        <td>hero_houzez_main.png, search_houzez_main.png</td>
+                        <td><span class="tag verified">Verified</span></td>
+                    </tr>
+                    <tr>
+                        <td>Property Filters</td>
+                        <td>lalpurjanepal</td>
+                        <td>filters_lalpurjanepal.png</td>
+                        <td><span class="tag verified">Verified</span></td>
+                    </tr>
+                    <tr>
+                        <td>Property Grid</td>
+                        <td>Houzez Agency</td>
+                        <td>property_grid_houzez_agency.png</td>
+                        <td><span class="tag verified">Verified</span></td>
+                    </tr>
+                    <tr>
+                        <td>Property Cards</td>
+                        <td>Houzez Luxury, realestateau</td>
+                        <td>property_cards_houzez_luxury.png</td>
+                        <td><span class="tag verified">Verified</span></td>
+                    </tr>
+                    <tr>
+                        <td>Property Detail Page</td>
+                        <td>Houzez Agency</td>
+                        <td>detail_page_houzez_agency.png</td>
+                        <td><span class="tag verified">Verified</span></td>
+                    </tr>
+                    <tr>
+                        <td>Lead Capture Forms</td>
+                        <td>Houzez Leads</td>
+                        <td>lead_capture_houzez_leads.png</td>
+                        <td><span class="tag verified">Verified</span></td>
+                    </tr>
+                    <tr>
+                        <td>Footer / Trust Signals</td>
+                        <td>realestateinnepal</td>
+                        <td>footer_realestateinnepal.png</td>
+                        <td><span class="tag verified">Verified</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Screenshots -->
+        <section id="screenshots">
+            <h2>Screenshots Gallery</h2>
+            <p style="margin-bottom: 1rem; color: #666;">
+                All captured screenshots from Phase 5. Click to view full size.
+            </p>
+            
+            <div class="screenshot-grid">
+                <!-- Note: Copy screenshots from /research/moodboard_assets/ to /research/moodboard/screenshots/ -->
+                <!-- Screenshot paths updated after capture -->
+                <div class="screenshot-card">
+                    <img src="screenshots/header_realestateinnepal_landscape.png" alt="Real Estate Nepal Header">
+                    <div class="screenshot-info">
+                        <h4>Header — Real Estate Nepal</h4>
+                        <p>Local competitor nav structure</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="screenshots/hero_realestateinnepal_landscape.png" alt="Real Estate Nepal Hero">
+                    <div class="screenshot-info">
+                        <h4>Hero — Real Estate Nepal</h4>
+                        <p>Listing sections (Top, Premium, Featured)</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="screenshots/filters_lalpurjanepal_landscape.png" alt="Lalpurja Filters">
+                    <div class="screenshot-info">
+                        <h4>Filters — Lalpurja Nepal</h4>
+                        <p>Budget ranges, property types (verified)</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="screenshots/filters_lalpurjanepal_properties_landscape.png" alt="Lalpurja Property Grid">
+                    <div class="screenshot-info">
+                        <h4>Property Grid — Lalpurja</h4>
+                        <p>Property listing presentation</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="screenshots/hero_realestateau_landscape.png" alt="RealEstate.com.au International">
+                    <div class="screenshot-info">
+                        <h4>International — RealEstate.com.au</h4>
+                        <p>Global competitor patterns</p>
+                    </div>
+                </div>
+                
+                <!-- Houzez Theme -->
+                <div class="screenshot-card">
+                    <img src="screenshots/header_houzez_main_landscape.png" alt="Houzez Main Header">
+                    <div class="screenshot-info">
+                        <h4>Header — Houzez Main Demo</h4>
+                        <p>Theme header structure</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="screenshots/hero_houzez_main_landscape.png" alt="Houzez Hero">
+                    <div class="screenshot-info">
+                        <h4>Hero — Houzez Main</h4>
+                        <p>Search overlay pattern</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="screenshots/search_houzez_main_landscape.png" alt="Houzez Search">
+                    <div class="screenshot-info">
+                        <h4>Search Panel — Houzez</h4>
+                        <p>Visual search builder</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="screenshots/property_grid_houzez_agency_landscape.png" alt="Houzez Agency Grid">
+                    <div class="screenshot-info">
+                        <h4>Property Grid — Houzez Agency</h4>
+                        <p>Listing card layout</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="screenshots/detail_page_houzez_agency_landscape.png" alt="Houzez Detail Page">
+                    <div class="screenshot-info">
+                        <h4>Detail Page — Houzez Agency</h4>
+                        <p>Property detail structure</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="screenshots/lead_capture_houzez_leads_landscape.png" alt="Houzez Lead Capture">
+                    <div class="screenshot-info">
+                        <h4>Lead Capture — Houzez Leads</h4>
+                        <p>CRM & forms demo</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="screenshots/forms_houzez_leads_landscape.png" alt="Houzez Forms">
+                    <div class="screenshot-info">
+                        <h4>Forms — Houzez Leads</h4>
+                        <p>Contact form patterns</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="screenshots/header_houzez_luxury_landscape.png" alt="Houzez Luxury">
+                    <div class="screenshot-info">
+                        <h4>Luxury Demo — Houzez</h4>
+                        <p>Property card styling</p>
+                    </div>
+                </div>
+                
+                <div class="screenshot-card">
+                    <img src="screenshots/property_cards_houzez_luxury_landscape.png" alt="Houzez Property Cards">
+                    <div class="screenshot-info">
+                        <h4>Property Cards — Houzez Luxury</h4>
+                        <p>Premium card design</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Nepal UX -->
+        <section id="nepal-ux">
+            <h2>Nepal-Specific UX Patterns</h2>
+            <p style="margin-bottom: 1rem; color: #666;">
+                Verified patterns from local competitors (realestateinnepal, lalpurjanepal).
+            </p>
+            
+            <div class="pattern-grid">
+                <div class="pattern-card">
+                    <h4>💰 Currency Format (NPR)</h4>
+                    <p class="correct">रू 2,50,00,000</p>
+                    <p class="correct">NPR 2,50,00,000</p>
+                    <code>NPR 25000000 ❌ (no commas)</code>
+                </div>
+                
+                <div class="pattern-card">
+                    <h4>📱 Phone Format</h4>
+                    <p class="correct">+977 98XXXXXXXX</p>
+                    <p class="correct">01-XXXXXXX (landline)</p>
+                    <code>+977 required for WhatsApp</code>
+                </div>
+                
+                <div class="pattern-card">
+                    <h4>💬 WhatsApp Integration</h4>
+                    <p>Floating button (bottom-right)</p>
+                    <p>Property card quick action</p>
+                    <p>Detail page CTA button</p>
+                    <code>api.whatsapp.com link</code>
+                </div>
+                
+                <div class="pattern-card">
+                    <h4>🏢 Trust Signals</h4>
+                    <p>Company registration #</p>
+                    <p>Physical address</p>
+                    <p>Multiple phone numbers</p>
+                    <code>License No: XXX/XXX/XX</code>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Budget Ranges -->
+        <section id="budget">
+            <h2>Budget Ranges (NPR)</h2>
+            <p style="margin-bottom: 1rem; color: #666;">
+                Verified from lalpurjanepal.com.np — exact match for user expectations.
+            </p>
+            
+            <ul class="budget-list">
+                <li>Less than 1 Crore</li>
+                <li>1 Crore - 2 Crores</li>
+                <li>2 Crores - 3 Crores</li>
+                <li>3 Crores - 4 Crores</li>
+                <li>4 Crores - 6 Crores</li>
+                <li>6 Crores - 10 Crores</li>
+                <li>Above 10 Crores</li>
+            </ul>
+        </section>
+        
+        <!-- Deploy -->
+        <section id="deploy">
+            <h2>🚀 Deploy Instructions</h2>
+            
+            <div class="info-box">
+                <h3>Quick Deploy (Pick One)</h3>
+                
+                <h4 style="margin-top: 1rem;">Option 1: GitHub Pages (Free)</h4>
+                <ol style="margin-left: 1.5rem; margin-top: 0.5rem; color: #666;">
+                    <li>Create GitHub repo</li>
+                    <li>Push this folder</li>
+                    <li>Settings → Pages → Deploy from main</li>
+                </ol>
+                
+                <h4 style="margin-top: 1rem;">Option 2: Netlify (Free)</h4>
+                <ol style="margin-left: 1.5rem; margin-top: 0.5rem; color: #666;">
+                    <li>Drag & drop this folder to netlify.com</li>
+                    <li>Instant deploy</li>
+                </ol>
+                
+                <h4 style="margin-top: 1rem;">Option 3: Vercel (Free)</h4>
+                <ol style="margin-left: 1.5rem; margin-top: 0.5rem; color: #666;">
+                    <li>npm i -g vercel</li>
+                    <li>vercel --prod</li>
+                </ol>
+            </div>
+            
+            <table class="component-table">
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>index.html</td>
+                        <td>Main moodboard page</td>
+                    </tr>
+                    <tr>
+                        <td>/screenshots/</td>
+                        <td>All captured images</td>
+                    </tr>
+                    <tr>
+                        <td>/css/</td>
+                        <td>Styles (embedded in index.html)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Hattiban Property Solutions — Visual Moodboard</p>
+        <p style="color: #999; font-size: 0.875rem; margin-top: 0.5rem;">
+            Research Phases 1-6 | Generated: 2026-03-04
+        </p>
+    </footer>
+    
+    <script>
+        // Smooth scroll for nav links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+                
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+        
+        // Intersection Observer for nav highlighting
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+        
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
